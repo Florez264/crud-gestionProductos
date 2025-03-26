@@ -64,3 +64,143 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+
+# API de Productos y Grupos - Laravel
+
+## Descripción
+Esta API permite administrar productos y su asignación a grupos. Se han implementado operaciones CRUD para productos y grupos, además de funcionalidades para asignar y remover productos de grupos.
+
+---
+
+## URL Base
+```
+http://127.0.0.1:8000/api/
+```
+
+---
+
+## Endpoints
+
+### **Productos**
+
+#### Obtener lista de productos
+- **Método:** `GET`
+- **URL:** `/productos/list-product`
+- **Descripción:** Retorna la lista de productos registrados.
+- **Respuesta de ejemplo:**
+```json
+{
+  "success": true,
+  "message": "Lista de productos obtenida exitosamente",
+  "data": [
+    {
+      "id": 1,
+      "nombre": "Producto 1",
+      "descripcion": "Descripción del producto",
+      "precio": 100.50,
+      "stock": 20,
+      "fecha_creacion": "2025-03-26T12:00:00Z",
+      "estado": "activo"
+    }
+  ]
+}
+```
+
+#### Crear un producto
+- **Método:** `POST`
+- **URL:** `/productos/create-product`
+- **Descripción:** Crea un nuevo producto.
+- **Cuerpo del request:**
+```json
+{
+  "nombre": "Producto Nuevo",
+  "descripcion": "Descripción del producto",
+  "precio": 150.75,
+  "stock": 30,
+  "estado": "activo"
+}
+```
+- **Respuesta de ejemplo:**
+```json
+{
+  "success": true,
+  "message": "Producto creado exitosamente",
+  "data": {
+    "id": 2,
+    "nombre": "Producto Nuevo",
+    "descripcion": "Descripción del producto",
+    "precio": 150.75,
+    "stock": 30,
+    "estado": "activo"
+  }
+}
+```
+
+#### Obtener un producto por ID
+- **Método:** `GET`
+- **URL:** `/productos/get/{producto}`
+- **Descripción:** Obtiene los detalles de un producto específico.
+
+#### Actualizar un producto
+- **Método:** `PUT`
+- **URL:** `/productos/update/{producto}`
+- **Descripción:** Actualiza la información de un producto.
+
+#### Eliminar un producto
+- **Método:** `DELETE`
+- **URL:** `/productos/delete/{producto}`
+- **Descripción:** Elimina un producto por ID.
+
+#### Asignar un producto a un grupo
+- **Método:** `POST`
+- **URL:** `/productos/asignar/{producto}/grupos/{grupo}`
+- **Descripción:** Asigna un producto a un grupo específico.
+
+#### Remover un producto de un grupo
+- **Método:** `DELETE`
+- **URL:** `/productos/removerGrupo/{producto}/grupos/{grupo}`
+- **Descripción:** Remueve la asignación de un producto a un grupo.
+
+---
+
+### **Grupos**
+
+#### Obtener lista de grupos
+- **Método:** `GET`
+- **URL:** `/grupos/list-grup`
+- **Descripción:** Retorna la lista de grupos registrados.
+
+#### Crear un grupo
+- **Método:** `POST`
+- **URL:** `/grupos/create-grup`
+- **Descripción:** Crea un nuevo grupo.
+
+#### Obtener un grupo por ID
+- **Método:** `GET`
+- **URL:** `/grupos/get/{grupo}`
+- **Descripción:** Obtiene los detalles de un grupo específico.
+
+#### Actualizar un grupo
+- **Método:** `PUT`
+- **URL:** `/grupos/update-grup/{grupo}`
+- **Descripción:** Actualiza la información de un grupo.
+
+#### Eliminar un grupo
+- **Método:** `DELETE`
+- **URL:** `/grupos/delete-grup/{grupo}`
+- **Descripción:** Elimina un grupo por ID.
+
+---
+
+## Consideraciones
+- Todos los endpoints devuelven respuestas en formato JSON.
+- Se utiliza AJAX para las peticiones desde el frontend.
+- Se recomienda utilizar herramientas como Postman para probar la API.
+
+---
+
+## Autores
+**Juan Carlos Atencio Florez**
+
